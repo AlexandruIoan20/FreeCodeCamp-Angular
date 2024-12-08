@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RoomsComponent, CommonModule],
+  imports: [RouterOutlet, RoomsComponent, CommonModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
