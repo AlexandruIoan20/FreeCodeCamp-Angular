@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Room } from './rooms';
 import { CommonModule } from '@angular/common';
 import { RoomList } from './rooms';
 import { RoomsListComponent } from "./rooms-list/rooms-list.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-rooms',
-  imports: [CommonModule, RoomsListComponent],
+  imports: [CommonModule, RoomsListComponent, HeaderComponent],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss'
 })
@@ -27,7 +28,10 @@ export class RoomsComponent {
   roomList: RoomList[] = []; 
   title='Room List'; 
 
+  @ViewChild(HeaderComponent, { static: true }) headerComponent!: HeaderComponent
+
   ngOnInit() { 
+    console.log(this.headerComponent);
     this.roomList = [ 
       { 
         roomNumber: 1, 
@@ -57,6 +61,10 @@ export class RoomsComponent {
         checkoutTime: new Date('12-Nov-2021'), 
       },
     ]
+  }; 
+
+  ngAfterViewInit () { 
+    console.log(this.headerComponent); 
   }
 
   toggle() { 
