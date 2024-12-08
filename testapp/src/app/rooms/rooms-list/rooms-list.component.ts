@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoomList } from '../rooms';
 
@@ -6,11 +6,20 @@ import { RoomList } from '../rooms';
   selector: 'app-rooms-list',
   imports: [ CommonModule ],
   templateUrl: './rooms-list.component.html',
-  styleUrl: './rooms-list.component.scss'
+  styleUrl: './rooms-list.component.scss', 
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RoomsListComponent {
   @Input() rooms: RoomList[] = []; 
+  @Input() title: string = ''; 
   @Output() selectedRoom = new EventEmitter<RoomList> ();
+
+  ngOnChanges (changes: SimpleChanges) { 
+      console.log(changes);  
+      if(changes['title']) { 
+        this.title = changes['title'].currentValue.toUpperCase(); 
+      }
+  }
 
   selectRoom(room: RoomList) { 
     this.selectedRoom.emit(room); 

@@ -25,6 +25,7 @@ export class RoomsComponent {
   selectedRoom!: RoomList; 
 
   roomList: RoomList[] = []; 
+  title='Room List'; 
 
   ngOnInit() { 
     this.roomList = [ 
@@ -60,11 +61,25 @@ export class RoomsComponent {
 
   toggle() { 
     this.hideRooms = !this.hideRooms; 
+    this.title = "Rooms List"; 
   }
 
   selectRoom(room: RoomList) { 
-    console.log(room);
-    console.log("X");  
+    console.log(room);  
     this.selectedRoom = room; 
+  }
+
+  addRoom() { 
+    const room: RoomList = { 
+      roomNumber: 4, 
+      roomType: "Deluxe Room", 
+      amenities: "Air Conditioner, Free Wi-Fi, Bathroom, Kitchen", 
+      price: 1500, 
+      photos: "https://unsplash.com/photos/a-man-sitting-in-a-chair-in-a-hotel-room-beeCdpiiXRk", 
+      checkinTime: new Date('11-Nov-2021'), 
+      checkoutTime: new Date('12-Nov-2021'), 
+     }
+
+    this.roomList = [...this.roomList, room]; 
   }
 }

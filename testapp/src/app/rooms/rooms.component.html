@@ -9,10 +9,14 @@
     {{ selectedRoom | json }}
 </div>
 
+<div>
+    <button (click)="addRoom()"> Add Room </button>
+</div>
+
 <div *ngIf="rooms != undefined && rooms.availableRooms && rooms.availableRooms > 0">
-    Rooms List
     <app-rooms-list
         [rooms]="roomList"
+        [title]="title"
         (selectedRoom)="selectRoom($event)"
     ></app-rooms-list>
 </div>
