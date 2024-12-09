@@ -81,6 +81,30 @@ export class RoomsComponent {
       checkoutTime: new Date('12-Nov-2021'),
      }
 
-    this.roomList = [...this.roomList, room];
+     this.roomsService.addRoom(room).subscribe(data => {
+          this.roomList = data;
+     })
+  }
+
+  editRoom() {
+    const room: RoomList = {
+      roomNumber: 3,
+      roomType: "Deluxe Room",
+      amenities: "Air Conditioner, Free Wi-Fi, Bathroom, Kitchen",
+      price: 1500,
+      photos: "https://unsplash.com/photos/a-man-sitting-in-a-chair-in-a-hotel-room-beeCdpiiXRk",
+      checkinTime: new Date('11-Nov-2021'),
+      checkoutTime: new Date('12-Nov-2021'),
+    }
+
+    this.roomsService.editRoom(room).subscribe(data => {
+      this.roomList = data;
+    })
+  }
+
+  deleteRoom() {
+    this.roomsService.delete('3').subscribe(data => {
+      this.roomList = data;
+    })
   }
 }
