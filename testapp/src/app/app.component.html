@@ -1,14 +1,4 @@
-<h1> Hello World! </h1>
-
-<div [ngSwitch]="role">
-  <div *ngSwitchCase="'User'">
-    Welcome User!
-  </div>
-  <div *ngSwitchCase="'Admin'">
-    <app-rooms></app-rooms>
-  </div>
-  <div *ngSwitchDefault>
-    You are not allowed to see this page!
-  </div>
-</div>  
+<a [routerLink]="'rooms'">Rooms</a>
+<a [routerLink]="'employee'">Employee</a>
+<app-header></app-header>
 <router-outlet />
