@@ -72,7 +72,8 @@
               "buildTarget": "testapp:build:production"
             },
             "development": {
-              "buildTarget": "testapp:build:development"
+              "buildTarget": "testapp:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

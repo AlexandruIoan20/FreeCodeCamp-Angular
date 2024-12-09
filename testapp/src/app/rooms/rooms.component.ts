@@ -40,13 +40,11 @@ export class RoomsComponent {
   @ViewChild(HeaderComponent, { static: true }) headerComponent!: HeaderComponent
 
   ngOnInit() {
-    console.log(this.headerComponent);
-    this.roomList = this.roomsService.getRooms();
+    this.roomsService.getRooms().subscribe(rooms => {
+      this.roomList = rooms;
+      console.log(this.roomList);
+    });
   };
-
-  ngAfterViewInit () {
-    console.log(this.headerComponent);
-  }
 
   toggle() {
     this.hideRooms = !this.hideRooms;
