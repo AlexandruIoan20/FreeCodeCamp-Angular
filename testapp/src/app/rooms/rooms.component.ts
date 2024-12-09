@@ -5,6 +5,7 @@ import { RoomList } from './rooms';
 import { RoomsListComponent } from "./rooms-list/rooms-list.component";
 import { HeaderComponent } from "../header/header.component";
 import { RoomsService } from './services/rooms.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -31,6 +32,13 @@ export class RoomsComponent {
 
   // roomService = new RoomsService(); - X
 
+  stream = new Observable<string>(observer => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.complete();
+  }) // Doar un exemplu
+
   constructor (
     private roomsService: RoomsService
   ) {
@@ -40,6 +48,12 @@ export class RoomsComponent {
   @ViewChild(HeaderComponent, { static: true }) headerComponent!: HeaderComponent
 
   ngOnInit() {
+    this.stream.subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log('complete'),
+      error: (err)=> console.log(err)
+    });
+
     this.roomsService.getRooms().subscribe(rooms => {
       this.roomList = rooms;
       console.log(this.roomList);
