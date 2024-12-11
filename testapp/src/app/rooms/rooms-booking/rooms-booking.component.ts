@@ -15,6 +15,6 @@ export class RoomsBookingComponent {
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       this.id = this.router.snapshot.params['id'];
-    })
+    });
   }
 }
