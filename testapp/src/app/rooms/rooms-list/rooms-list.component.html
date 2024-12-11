@@ -15,7 +15,7 @@
             </th>
         </tr>
         <tr
-            [ngClass]="e ? 'even' : 'odd'" 
+            [ngClass]="e ? 'even' : 'odd'"
             *ngFor="let room of rooms; let e=even; let o=odd; let i = index"
         >
             <td> {{ i }} </td>
@@ -27,12 +27,13 @@
             <td> {{ room.checkinTime | date : 'short' }} </td>
             <td> {{ room.checkoutTime | date }} </td>
             <td>
-                <button
+              <!--                <button
                     class="btn btn-primary"
                     (click)="selectRoom(room)"
                 >
-                    Select 
-                </button>
+                    Select
+                </button> -->
+              <button class="btn btn-primary" [routerLink]="['/rooms', room.roomNumber]"> Book Room </button>
             </td>
         </tr>
     </tbody>
