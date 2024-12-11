@@ -6,10 +6,11 @@ import { RoomsListComponent } from "./rooms-list/rooms-list.component";
 import { HeaderComponent } from "../header/header.component";
 import { RoomsService } from './services/rooms.service';
 import { Observable } from 'rxjs';
+import {LoginComponent} from '../login/login.component';
 
 @Component({
   selector: 'app-rooms',
-  imports: [CommonModule, RoomsListComponent, HeaderComponent],
+  imports: [CommonModule, RoomsListComponent, HeaderComponent, LoginComponent],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss'
 })
