@@ -1,0 +1,127 @@
+{{ bookingForm.value | json }}
+
+<!--
+export interface Booking {
+  roomId: string,
+  guestEmail: string,
+  checkinDate: Date,
+  checkoutDate: Date,
+  bookingStatus: string,
+  bookingAmount: number,
+  bookingDate: Date,
+  mobileNumber: string,
+  guestName: string,
+  guestAddress: string,
+  guestCity: string,
+  guestState: string,
+  guestCountry: string,
+  guestZipCode: string,
+  guestCount: number,
+  guestList: [],
+}
+-->
+
+<form [formGroup]="bookingForm" class = 'form-basics' (ngSubmit)="addBooking()">
+  <mat-form-field>
+    <mat-label>Room Id</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder=""
+      formControlName="roomId"
+    />
+    <!--
+          @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+    -->
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label> Guest Email </mat-label>
+    <input
+      type = "email"
+      matInput
+      placeholder = "Guest Email"
+      formControlName = "guestEmail"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Guest Name</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Guest Name"
+      formControlName="guestName"
+    />
+    <!--
+          @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+    -->
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Mobile Number</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Mobile Number"
+      formControlName="mobileNumber"
+    />
+    <!--
+          @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+    -->
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Booking Amount</mat-label>
+    <input
+      type="number"
+      matInput
+      placeholder="Booking Amount"
+      formControlName="bookingAmount"
+    />
+    <!--
+          @if (email.invalid) {
+      <mat-error>{{errorMessage()}}</mat-error>
+    }
+    -->
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Checkin Date</mat-label>
+    <input
+        matInput
+        [matDatepicker]="pickerA"
+        formControlName="checkinDate"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerA"></mat-datepicker-toggle>
+    <mat-datepicker #pickerA></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Checkout Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="pickerB"
+      formControlName="checkoutDate"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerB"></mat-datepicker-toggle>
+    <mat-datepicker #pickerB></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Booking Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="pickerC"
+      formControlName="bookingDate"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="pickerC"></mat-datepicker-toggle>
+    <mat-datepicker #pickerC></mat-datepicker>
+  </mat-form-field>
+
+  <div>
+    <button mat-flat-button color="primary"> Submit </button>
+  </div>
+</form>

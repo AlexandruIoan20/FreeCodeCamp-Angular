@@ -1,13 +1,14 @@
 import { Routes } from '@angular/router';
-import { RoomsComponent } from './rooms/rooms.component';
-import { EmployeeComponent } from './employee/employee.component';
 import {NotfoundComponent} from './notfound/notfound.component';
-import {RoomsBookingComponent} from './rooms/rooms-booking/rooms-booking.component';
 
 export const routes: Routes = [
   {
     path: 'employee',
     loadComponent: () => import('./employee/employee.component').then(m => m.EmployeeComponent)
+  },
+  {
+    path: 'bookings',
+    loadComponent: () => import('./bookings/bookings.component').then(m => m.BookingsComponent),
   },
   {
     path: 'rooms',
