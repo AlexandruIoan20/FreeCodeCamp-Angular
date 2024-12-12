@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, FormControl, FormArray } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +22,10 @@ export class BookingsComponent {
 
   bookingForm!: FormGroup;
 
+  get guests() {
+    return this.bookingForm.get('guests') as FormArray;
+  }
+
   ngOnInit() {
     this.bookingForm = this.fb.group({
       roomId: new FormControl(''),
@@ -41,12 +45,24 @@ export class BookingsComponent {
         country: new FormControl(''),
         zipCode: new FormControl(''),
       }),
-      guestCount: new FormControl(''),
-      //guestList: [],
+      guests: this.fb.array([this.fb.group({
+        guestName: new FormControl(''),
+        age: new FormControl(''),
+      })]),
     })
   }
 
   addBooking() {
     console.log(this.bookingForm.getRawValue());
+  }
+
+  addGuest() {
+    this.guests.push(
+      this.fb.group({
+        guestName: new FormControl(''),
+        age: new FormControl(''),
+      })
+    )
+    console.log(this.guests);
   }
 }

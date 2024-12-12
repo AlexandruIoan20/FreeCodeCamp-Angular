@@ -1,26 +1,4 @@
 {{ bookingForm.value | json }}
-
-<!--
-export interface Booking {
-  roomId: string,
-  guestEmail: string,
-  checkinDate: Date,
-  checkoutDate: Date,
-  bookingStatus: string,
-  bookingAmount: number,
-  bookingDate: Date,
-  mobileNumber: string,
-  guestName: string,
-  guestAddress: string,
-  guestCity: string,
-  guestState: string,
-  guestCountry: string,
-  guestZipCode: string,
-  guestCount: number,
-  guestList: [],
-}
--->
-
 <form [formGroup]="bookingForm" class = 'form-basics' (ngSubmit)="addBooking()">
   <mat-form-field>
     <mat-label>Room Id</mat-label>
@@ -30,11 +8,6 @@ export interface Booking {
       placeholder=""
       formControlName="roomId"
     />
-    <!--
-          @if (email.invalid) {
-      <mat-error>{{errorMessage()}}</mat-error>
-    }
-    -->
   </mat-form-field>
   <mat-form-field>
     <mat-label> Guest Email </mat-label>
@@ -188,8 +161,19 @@ export interface Booking {
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+  <div formArrayName="guests">
+    <div *ngFor="let guest of guests.controls; let i = index">
+      <div formGroupName="i">
+
+      </div>
+    </div>
+  </div>
 
   <div>
-    <button mat-flat-button color="primary"> Submit </button>
+    <button (click)="addGuest()" mat-flat-button color="primary" type="button"> Add Guest </button>
+  </div>
+
+  <div>
+    <button mat-flat-button color="primary"> Book Room </button>
   </div>
 </form>
